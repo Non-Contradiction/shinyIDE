@@ -20,7 +20,7 @@ cellUI <- function(id) {
 cell <- function(input, output, session, data, left, right) {
     
     evaluation <- eventReactive(input$run, {
-        evaluate(input$text, envir = sandbox)
+        evaluate::evaluate(input$text, envir = sandbox)
     })
     
     output$text <- renderUI({HTML(join(evaluation()[-1], sep = '<br/>'))})
